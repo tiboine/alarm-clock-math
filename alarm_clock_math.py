@@ -41,6 +41,3 @@ if user == str(answer_random+1):
 else:
 	print('Nope. try again')
 
-
-
-
