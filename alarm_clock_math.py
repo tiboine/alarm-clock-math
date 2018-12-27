@@ -39,5 +39,3 @@ user = input('Guess 1-4 : ')
 if user == str(answer_random+1):
 	print('Good boy. Alarm off')
 else:
-	print('Nope. try again')
-
