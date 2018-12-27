@@ -36,11 +36,11 @@ print('')
 print(answers[answer_random])
 
 
-user = input('your guess: ')
+user = input('Guess 1-4 : ')
 if user == str(answer_random+1):
-	print('wee')
+	print('Good boy. Alarm off')
 else:
-	print('nooooo')
+	print('Nope. try again')
 
 
 
