@@ -3,7 +3,6 @@
 
 import random
 import time
-score = 0
 score_time = 5
 score_times = 0
 
@@ -12,18 +11,25 @@ def main():
 	x = 0
 	global score_time
 	global score_times
-	global score
 	random_int = list(range(1,99))
 	symbols = ['+', '-', '/', '*']
 	random.shuffle(symbols)
 	answers = [0,0,0,0]
+	difficulty = 0
+	diff = input('hard or easy?')
+	if diff == '1':
+		difficulty = random.choice(symbols)
+	if diff == '2':
+		difficulty = symbols.pop(0)
 	print('')
 	print('***********')
 	start = time.time()
 	for num in range(4):
 		
 		first = random.choice(random_int) # first number
-		symbol = symbols.pop(0) # arithmetic symbol
+		#symbol = symbols.pop(0) # arithmetic symbol
+		#symbol = random.choice(symbols)
+		symbol = difficulty
 		last = random.choice(random_int) # last number
 		
 		
@@ -49,14 +55,12 @@ def main():
 	
 	print(str(answers[answer_random]) + ' is the answer to? ') # print answer to the equation to guess
 
-	user = input('Guess 1-4: ')
+	user = input('Choose 1-4: ')
 	if user == str(answer_random + 1):
 		end = time.time()
 		time_used = round(end-start)
-		score += 1		
 		score_times = max(0, score_times + (score_time - time_used))
-		print('your timed score is ' + str(score_times))
-		#print('Your score is ' + str(score))
+		print('your score is ' + str(score_times))
 		print('Good boy. Alarm off')
 		print('Want to try again?')
 		
@@ -70,8 +74,7 @@ def main():
 
 	else:
 		print('Nope. try again')
-		score -= 1
-		print('Your score is: ' + str(score))
+		print('Your score is: ' + str(score_times))
 		main()
 
 while True:
@@ -83,4 +86,4 @@ while True:
 # repeat app when wrong answer given /done
 # add scoreboard /done
 # only one type of aritmethic symbol at once /done
-# add timer (!) 
+# add timer (!) /done #score based on timer
